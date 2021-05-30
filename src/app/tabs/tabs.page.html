@@ -1,0 +1,76 @@
+<ion-content>
+
+
+  <div class="collrctions">
+    <div class="collection">
+      <ion-label>Select</ion-label>
+      <ion-select class="custom-options" mode="ios" [(ngModel)]="selected_option">
+        <ion-select-option *ngFor="let item of data">
+          {{item}}
+        </ion-select-option>
+      </ion-select>
+
+    </div>
+    <div class="collection">
+      <ion-label>Select</ion-label>
+      <ion-select class="custom-options" mode="ios" [(ngModel)]="selected_option">
+        <ion-select-option *ngFor="let item of data_author">
+          {{item}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="collection">
+      <ion-label>Select</ion-label>
+      <ion-select class="custom-options" mode="ios" [(ngModel)]="selected_option">
+        <ion-select-option *ngFor="let item of data_update">
+          {{item}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+
+  <div class="list-header">
+    List for {{selected_option}}
+    <ion-badge color="danger">{{Shayaries.length}}</ion-badge>
+  </div>
+
+  <ion-list #slidingList>
+    <ion-item-sliding *ngFor="let item of Shayaries index as i;">
+      <ion-item>
+        <p>{{item}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="delete(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </button>
+        <button ion-button color="success" (click)="edit(item,i)">
+          <ion-icon name="create-outline"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addItem()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="commit(selected_option)">
+    <ion-fab-button>
+      <ion-icon name="push-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div [ngClass]="showForm? 'form-open': 'form-closed'" class="form">
+    <ion-list>
+      <ion-icon class="close" name="arrow-down-outline" slot="end" (click)="showForm=false"></ion-icon>
+      <ion-item>
+        <ion-input [(ngModel)]="Shayari"></ion-input>
+      </ion-item>
+      <ion-button (click)="push()" size="large" expand="block">Push</ion-button>
+    </ion-list>
+  </div>
+
+</ion-content>

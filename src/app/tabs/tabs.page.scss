@@ -1,0 +1,122 @@
+
+$box-shadow: 4px 4px 5px 1px rgba(209, 209, 209, 0.85);
+$gradient: linear-gradient(90deg, rgba(250, 124, 105, 1) 0%, rgba(250, 106, 107, 1) 62%, rgba(251, 84, 113, 1) 100%);
+
+@mixin gradient() {
+  background: $gradient;
+}
+
+.collrctions
+{
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+}
+
+
+
+.collection
+{
+  text-align: center;
+  text-transform: uppercase;
+  @include gradient();
+}
+
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+
+ion-content {
+
+
+  --offset-bottom: -102px !important;
+  margin-top: 16px;
+  .list-header {
+    font-size: 1.7rem;
+    color: black;
+    margin: 16px;
+    font-weight: bold;
+  }
+  ion-list {
+    ion-icon[name="trash-outline"],
+    ion-icon[name="create-outline"] {
+      font-size: 2rem;
+    }
+    ion-icon[name="trash-outline"] {
+      color: red;
+    }
+    ion-item {
+      p {
+        &.checked {
+          text-decoration: line-through rgba(250, 106, 107, 1);
+        }
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+
+  ion-fab-button,
+  ion-button {
+    --background: linear-gradient(
+      90deg,
+      rgba(250, 124, 105, 1) 0%,
+      rgba(250, 106, 107, 1) 62%,
+      rgba(251, 84, 113, 1) 100%
+    );
+  }
+
+  ion-button {
+    margin: 74px 16px 16px 16px;
+  }
+
+
+  .form {
+    width: 100%;
+    height: calc(100vh - 160px);
+    position: fixed;
+    bottom: 50px;
+    transition: transform 0.7s ease-in-out;
+
+    ion-list {
+      background-color: white;
+      margin: 16px;
+      border: 2px solid rgba(250, 106, 107, 1);
+
+      border-radius: 8px;
+      box-shadow: $box-shadow;
+      ion-item {
+        &.no-border {
+          --border-color: white;
+        }
+        --border-color: grey; // default underline color
+        --highlight-color-invalid: red; // invalid underline color
+        --highlight-color-valid: black; // valid underline color
+      }
+    }
+
+
+
+    .close {
+      font-size: 3rem;
+      transform: translate(10px, -10px);
+      color: rgba(251, 84, 113, 1);
+    }
+
+    .placeholder {
+      color: rgb(175, 176, 180);
+      font-size: 1.5rem;
+    }
+  }
+
+
+  .form-open {
+
+    transform: translateY(0%);
+  }
+  .form-closed {
+    transform: translateY(120%);
+  }
+}
